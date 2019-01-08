@@ -1,4 +1,16 @@
 <h2>Heroes Component Title</h2>
-<p>
-  heroes works!
-</p>
+<div>
+    <p>Selected hero: {{hero.name}} with ID: {{hero.id}}</p>
+    <div>
+        <input type="text" [(ngModel)]="hero.name" placeholder="name">
+
+        <!-- hero is an object, so we have to parse it in order to print -->
+        <!-- by using json pipe we can make it work :) -->
+        <p>{{hero | json }}</p> 
+
+        <button (click)=doIt()>Make me Hero!</button>
+    </div>
+</div>
+
+
+

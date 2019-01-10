@@ -1,5 +1,6 @@
-<div>
-  <h2>My Selected Heroes:</h2>
+<div class="heroes-list">
+  <h2>My List Of Heroes</h2>
+  <h4>Language: {{lang}}</h4>
   <ul class="heroes">
     <!-- Loop in heroes list -->
     <li *ngFor="let hero of heroes" [class.selected]="hero === selectedHero" (click)="onSelect(hero)">
@@ -7,8 +8,11 @@
     </li>
   </ul>
 </div>
+<app-hero-detail [hero]="selectedHero"></app-hero-detail>
 
-<div *ngIf="selectedHero">
+
+<!-- Moved to hero-detail component -->
+<!-- <div *ngIf="selectedHero">
   <h2>{{selectedHero.name | uppercase}} Details</h2>
   <div><span>id: </span>{{selectedHero.id}}</div>
   <div>
@@ -16,4 +20,4 @@
       <input [(ngModel)]="selectedHero.name" placeholder="name">
     </label>
   </div>
-</div>
+</div> -->

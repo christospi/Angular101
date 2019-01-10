@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Hero } from '../classes/hero'
 import { HEROES } from '../utils/mock-heroes';
+import { HeroServiceService } from '../services/hero-service.service';
 
 @Component({
     selector: 'app-heroes', // component name
@@ -9,13 +10,15 @@ import { HEROES } from '../utils/mock-heroes';
 })
 export class HeroesComponent implements OnInit {
 
-    constructor() { }
+    constructor(private heroservice: HeroServiceService) { }
 
-    heroname = 'Deadpool';
-    newhero = 'Spiderman';
     // hero: Hero = new Hero();
+    heroname = 'Deadpool';
+    newhero = `Not${this.heroname}`;
     heroes = HEROES;
     selectedHero: Hero;
+
+    lang: string;
 
     ngOnInit() {
         // this.hero = `The new hero is: ${this.newhero}`;
@@ -23,6 +26,8 @@ export class HeroesComponent implements OnInit {
         // this.heroname = 'Batman';
         // this.hero.id = 11
         // this.hero.name = 'Heroku'
+
+        this.lang = this.heroservice.lang;
     }
 
     doIt() {

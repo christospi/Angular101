@@ -1,6 +1,7 @@
 <div class="heroes-list">
   <h2>My List Of Heroes</h2>
   <h4>Language: {{lang}}</h4>
+  <button (click)="heroService.getHeroes()">Fetch Heroes</button>
   <ul class="heroes">
     <!-- Loop in heroes list -->
     <li *ngFor="let hero of heroes" [class.selected]="hero === selectedHero" (click)="onSelect(hero)">
@@ -9,7 +10,6 @@
   </ul>
 </div>
 <app-hero-detail [hero]="selectedHero"></app-hero-detail>
-
 
 <!-- Moved to hero-detail component -->
 <!-- <div *ngIf="selectedHero">

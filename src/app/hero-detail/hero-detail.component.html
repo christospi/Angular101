@@ -3,7 +3,9 @@
   <div><span>ID: </span>{{hero.id}}</div>
   <div>
     <label>Name:
-      <input [(ngModel)]="hero.name" placeholder="name">
+      <input [(ngModel)]="hero.name" placeholder="Enter Hero Name" (change)=dataChanged()>
     </label>
   </div>
+  <br>
+  <button *ngIf="!hero.id" (click)="doSave()">Save Hero</button>
 </div>

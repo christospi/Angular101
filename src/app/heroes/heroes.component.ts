@@ -19,6 +19,7 @@ export class HeroesComponent implements OnInit {
     selectedHero: Hero;
 
     lang: string;
+    childIsDirty = null;
 
     ngOnInit() {
         // this.hero = `The new hero is: ${this.newhero}`;
@@ -36,11 +37,26 @@ export class HeroesComponent implements OnInit {
     }
 
     onSelect(hero: Hero): void {
-        this.selectedHero = hero;
+        if (!this.childIsDirty) {
+            this.selectedHero = hero;
+        }
     }
 
     getHeroes(): void {
         // this.heroes = this.heroService.simpleGetHeroes();
         this.heroService.getHeroes().subscribe(response => this.heroes = response);
+    }
+
+    doNewHero(): void {
+        this.selectedHero = { id: null, name: null };
+    }
+
+    childChanged(state: boolean) {
+        this.childIsDirty = state;
+    }
+
+    childSaved() {
+        // Refresh data when we save (POST) new hero on our DB
+        this.ngOnInit();
     }
 }

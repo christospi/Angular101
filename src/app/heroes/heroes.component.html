@@ -2,14 +2,26 @@
   <h2>My List Of Heroes</h2>
   <h4>Language: {{lang}}</h4>
   <button (click)="heroService.getHeroes()">Fetch Heroes</button>
+  <button (click)="doNewHero()" placeholder="Enter Name">Add Hero</button>
   <ul class="heroes">
     <!-- Loop in heroes list -->
-    <li *ngFor="let hero of heroes" [class.selected]="hero === selectedHero" (click)="onSelect(hero)">
+    <li *ngFor="let hero of heroes" 
+        [class.selected]="hero === selectedHero" 
+        (click)="onSelect(hero)">
+        <!-- 2nd way for CSS class in li tag -->
+        <!-- [ngClass]="{'selected': hero === selectedHero}" -->
       <span class="badge">{{hero.id}}</span> {{hero.name}}
     </li>
   </ul>
 </div>
-<app-hero-detail [hero]="selectedHero"></app-hero-detail>
+<!-- We pass to Detail Component our hero as the selectedHero -->
+<app-hero-detail [hero]="selectedHero" 
+(childChanged)=childChanged($event)
+(childSaved)=childSaved()>
+</app-hero-detail> 
+
+<!-- You can add *ngIf condition to show/hide component -->
+<!-- <app-hero-detail *ngIf=false [hero]="selectedHero"></app-hero-detail> -->
 
 <!-- Moved to hero-detail component -->
 <!-- <div *ngIf="selectedHero">

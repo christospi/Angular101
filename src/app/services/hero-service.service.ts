@@ -38,6 +38,14 @@ export class HeroServiceService {
             );
     }
 
+    saveHero(hero: Hero) {
+        this.messageService.add(`HeroService: Saving Hero: ${hero.name}`);
+        return this.http.post<Hero>(this.APIurl, hero)
+        .pipe(
+            catchError(this.handleError('saveHero()', null))
+        );
+    }
+
     /**
      * Handle Http operation that failed.
      * Let the app continue.

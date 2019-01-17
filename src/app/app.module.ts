@@ -9,6 +9,7 @@ import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { MessageComponent } from './message/message.component';
 
 import { HttpClientModule } from '@angular/common/http';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 // FOR MATERIAL.IO USE  - DATEPICKER
 // import { BrowserAnimationsModule} from '@angular/platform-browser/animations'
@@ -33,7 +34,8 @@ export const MY_NATIVE_DATE_FORMATS = {
         AppComponent,
         HeroesComponent,
         HeroDetailComponent,
-        MessageComponent
+        MessageComponent,
+        DashboardComponent
     ],
     imports: [
         BrowserModule,
